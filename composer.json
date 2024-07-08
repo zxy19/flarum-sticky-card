@@ -23,12 +23,12 @@
     },
     "extra": {
         "flarum-extension": {
-            "title": "Xypp-sticky-card",
-            "category": "",
+            "title": "Sticky Card",
+            "category": "feature",
             "icon": {
-                "name": "",
-                "color": "",
-                "backgroundColor": ""
+                "name": "fas fa-hand-point-up",
+                "color": "#FFFFFF",
+                "backgroundColor": "#2196f3"
             }
         },
         "flarum-cli": {
