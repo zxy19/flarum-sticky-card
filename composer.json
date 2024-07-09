@@ -8,8 +8,10 @@
     "license": "MIT",
     "require": {
         "flarum/core": "^1.2.0",
-        "xypp-store": "^0.1.0",
         "flarum/sticky": "^1.0.0"
+    },
+    "require-dev": {
+        "xypp/store": "^0.1.0"
     },
     "authors": [
         {

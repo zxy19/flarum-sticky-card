@@ -13,11 +13,21 @@ namespace Xypp\StickyCard;
 
 use Flarum\Extend;
 
-return [
+$ret=[
     (new Extend\Frontend('forum'))
         ->js(__DIR__ . '/js/dist/forum.js')
         ->css(__DIR__ . '/less/forum.less'),
-    (new \Xypp\Store\Extend\StoreItemProvider())
-        ->provide(StoreProvider::class),
     new Extend\Locales(__DIR__ . '/locale'),
 ];
+
+if(class_exists(\Xypp\Store\AbstractStoreProvider::class)){
+    $ret[]=(new \Xypp\Store\Extend\StoreItemProvider())
+        ->provide(StoreProvider::class);
+}
+
+// The try of support flarum-ext-store is not successful. Give up for now.
+// if(class_exists(\Mattoid\Store\Extend\StoreExtend::class)){
+//     $ret[]=(new \Mattoid\Store\Extend\StoreExtend("sticky-card"))
+//     ->addStoreGoods(MattoidGood::class);
+// }
+return $ret;
