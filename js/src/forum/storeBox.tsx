@@ -9,7 +9,7 @@ type feApp = (
 ) => void;
 export function storeBox(app: ForumApplication) {
   (flarum.extensions['xypp-store'].addFrontendProviders as feApp)(
-    "sticky-card", app.translator.trans("xypp-store.forum.create-modal.providers.sticky-card") as string,
+    "sticky-card", app.translator.trans("xypp-sticky-card.forum.sticky-card") as string,
     async function getProviderData(providerDatas) {
       providerDatas['default'] = app.translator.trans("xypp-sticky-card.forum.default") as string
     },

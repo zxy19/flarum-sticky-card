@@ -22,4 +22,4 @@ php flarum cache:clear
 
 ## Links
 
-- [GitHub](https://github.com/xypp/flarum-sticky-card)
+- [GitHub](https://github.com/zxy19/flarum-sticky-card)

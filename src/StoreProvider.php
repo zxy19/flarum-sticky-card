@@ -31,7 +31,7 @@ class StoreProvider extends AbstractStoreProvider
     public function purchase(StoreItem $item, User $user, PurchaseHistory|null $old = null, PurchaseContext $context): array|bool|string
     {
         $context->setExpire(null);
-        return true;
+        return "default";
     }
 
     public function useItem(PurchaseHistory $item, User $user, string $data, UseContext $context): bool
