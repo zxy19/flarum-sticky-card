@@ -4,15 +4,15 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/xypp/sticky-card.svg)](https://packagist.org/packages/xypp/sticky-card)
 [![Total Downloads](https://img.shields.io/packagist/dt/xypp/sticky-card.svg)](https://packagist.org/packages/xypp/sticky-card)
 
-A [Flarum](http://flarum.org) extension. Allow user to buy a item to sticky their discussion.
+[Flarum](http://flarum.org)的拓展，允许用户购买置顶卡（类似DZ的提升卡）
 
-Requires xypp-store and flarum-sticky.
+需要xypp-store和flarum-sticky.
 
 ## Usage
 
 https://imgur.com/a/joLOBrY
 
-Click Disscussion options, click "Use Sticky Card", and then select a card item or buy one.
+点击帖子右边的选项，点击“使用置顶卡”，然后选择一张卡或者购买。
 
 ## Installation
 
