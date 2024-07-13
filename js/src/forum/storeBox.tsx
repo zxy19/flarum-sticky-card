@@ -1,18 +1,10 @@
 import { extend, override } from 'flarum/common/extend';
 import ForumApplication from 'flarum/forum/ForumApplication';
-type feApp = (
-  provider: string,
-  name: string,
-  getProviderData: (providerDatas: { [key: string]: string }) => Promise<void>,
-  getShowCase: (item: any, purchase_history?: any) => any,
-  getUseData: (item: any) => Promise<string>
-) => void;
+import Store from './StoreHelper';
 export function storeBox(app: ForumApplication) {
-  (flarum.extensions['xypp-store'].addFrontendProviders as feApp)(
+  Store.addFrontendProviders(
     "sticky-card", app.translator.trans("xypp-sticky-card.forum.sticky-card") as string,
-    async function getProviderData(providerDatas) {
-      providerDatas['default'] = app.translator.trans("xypp-sticky-card.forum.default") as string
-    },
+    undefined,
     function createItemShowCase(item, purchase_history) {
       return (
         <div style="text-align:center;">

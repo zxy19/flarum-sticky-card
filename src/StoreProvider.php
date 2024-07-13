@@ -17,6 +17,7 @@ use Xypp\Store\Context\UseContext;
 use Xypp\Store\PurchaseHistory;
 use Xypp\Store\StoreItem;
 use Carbon\Carbon;
+use Xypp\Store\Context\ExpireContext;
 
 class StoreProvider extends AbstractStoreProvider
 {
@@ -25,7 +26,7 @@ class StoreProvider extends AbstractStoreProvider
     public $canUse = true;
     public $canUseFrontend = false;
 
-    public function expire(PurchaseHistory $item): bool
+    public function expire(PurchaseHistory $item,ExpireContext $context): bool
     {
         if ($item->data != "default") {
             $d = Discussion::find($item->data);
