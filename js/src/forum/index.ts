@@ -7,6 +7,7 @@ import Modal from 'flarum/common/components/Modal';
 import LoadingIndicator from 'flarum/common/components/LoadingIndicator';
 import Alert from 'flarum/common/components/Alert';
 import setRouteWithForcedRefresh from "flarum/common/utils/setRouteWithForcedRefresh";
+import DiscussionStickyCardUsage from './components/DiscussionStickyCardUsage';
 class loadingModal extends Modal {
   className(): string { return 'Modal'; }
   title() {
@@ -15,6 +16,8 @@ class loadingModal extends Modal {
   content() { return LoadingIndicator.component() }
 }
 app.initializers.add('xypp/sticky-card', () => {
+  3
+  app.postComponents.discussionStickyCardUsage = DiscussionStickyCardUsage;
   if ('xypp-store' in flarum.extensions) {
     storeBox(app);
   }

@@ -10,3 +10,7 @@ xypp-sticky-card:
     success: "成功使用"
     already: "该帖子已置顶"
     sticky-card: "置顶卡"
+    sticky_card_take_effect: "{username}使用了置顶卡"
+    sticky_card_expire: "{username}的置顶卡已过期"
+  api:
+    already_sticky: "这个帖子已经被置顶了."

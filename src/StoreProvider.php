@@ -26,13 +26,18 @@ class StoreProvider extends AbstractStoreProvider
     public $canUse = true;
     public $canUseFrontend = false;
 
-    public function expire(PurchaseHistory $item,ExpireContext $context): bool
+    public function expire(PurchaseHistory $item, ExpireContext $context): bool
     {
         if ($item->data != "default") {
             $d = Discussion::find($item->data);
             if ($d) {
+                if (!$d->getAttribute("is_sticky"))
+                    return true;
+
                 $d->setAttribute("is_sticky", false);
-                $d->save();
+                if ($d->save()) {
+                    $d->mergePost(PostStickCardEffect::reply($d->id, $item->user->id, false));
+                }
             }
         }
         return true;
@@ -48,8 +53,11 @@ class StoreProvider extends AbstractStoreProvider
         if ($item->data != "default") {
             $d = Discussion::find($item->data);
             if ($d) {
-                $d->setAttribute("is_sticky", false);
-                $d->save();
+                if ($d->getAttribute("is_sticky")) {
+                    $d->setAttribute("is_sticky", false);
+                    $d->save();
+                    $d->mergePost(PostStickCardEffect::reply($d->id, $item->user->id, false));
+                }
             }
         }
         if ($item->expire_at === null) {
@@ -62,8 +70,16 @@ class StoreProvider extends AbstractStoreProvider
         $d = Discussion::find($item->data);
         if (!$d)
             return false;
+        if ($d->getAttribute("is_sticky")) {
+            $context->exceptionWith("xypp-sticky-card.api.already_sticky");
+        }
         $d->setAttribute("is_sticky", true);
-        return $d->save();
+        if ($d->save()) {
+            $d->mergePost(PostStickCardEffect::reply($d->id, $user->id, true));
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function canPurchase(StoreItem $item, User $user): bool|string
